@@ -46,7 +46,6 @@ html, body {
 /* Home Section Styles */
 #home {
     background-color: #151C62;
-    color: white;
     display: flex;
     align-items: center;
     gap: 4.5rem;
@@ -69,5 +68,30 @@ html, body {
 }
 
 #home p {
+    color: white;
+    font-size: 1.25rem;
+}
+
+/* About Section Styles */
+#about {
+    display: flex;
+    align-items: center;
+    background-color: #1B237A;
+    gap: 4.5rem;
+    padding: 4.5rem;
+}
+
+#about img {
+    float: left;
+    border-radius: 5%;
+}
+
+#about h2 {
+    font-size: 3rem;
+    color: #E63946;
+}
+
+#about p {
+    font-size: 1.25rem;
     color: white;
 }
