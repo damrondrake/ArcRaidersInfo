@@ -3,11 +3,28 @@ html, body {
     padding: 0;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+@media (max-width: 768px) {
+    #gameplay {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    #gameplay-content {
+        max-width: 100%;
+    }
+
+    #gameplay img {
+        max-width: 80%;
+    }
 }
 
+@media (min-width: 1600px) {
+    #gameplay img {
+        max-width: 1000px;
+    }
+}
 
 
 /* Navigation Bar Styles */
@@ -48,6 +65,28 @@ img {
 #nav-bar a:hover {
     background-color: rgba(255,255,255,0.08);
     border-radius: 4px;
+}
+
+/* Hamburger / toggle button (hidden on larger screens) */
+#nav-toggle {
+    display: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    width: 40px;
+    height: 32px;
+    padding: 0;
+    margin-left: 12px;
+}
+
+#nav-toggle .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: white;
+    margin: 5px 0;
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 /* Home Section Styles */
@@ -106,7 +145,7 @@ img {
 /* Features Section Styles */
 #features {
     background-color: #2A35A3;
-    padding: clamp(2rem, 5vw, 6.5rem);
+    padding: clamp(2rem, 5vw, 6.5rem)
 }
 
 #features > * { 
@@ -148,14 +187,20 @@ img {
 #gameplay {
     display: flex;
     align-items: center;
-    padding: 3.5rem;
-    background-color: #2F3EB0;;
+    gap: 5rem;
+    justify-content: space-around;
+    background-color: #2F3EB0;
+    flex-wrap: wrap;
 }
 
 #gameplay-content h2 {
     font-size: 3rem;
     color: #00E5FF;
-    margin-left: 15px;
+}
+
+#gameplay-content {
+    max-width: 60ch;
+    flex: 1;
 }
 
 #gameplay p, 
@@ -166,13 +211,122 @@ img {
     color: white;
 }
 
-#gameplay-content p {
-    width: 60ch;
-}
 
 #gameplay img {
-    float: right;
     border-radius: 5%;
-    padding-left: 5rem;
-    width: 45%;
+    flex: 1 1 45%;
+    min-width: 300px;
+    max-width: 900px;
+    height: auto;
+}
+
+/* iPhone SE specific tweaks (375x667) */
+@media (max-width: 375px) {
+    #nav-bar {
+        height: 64px;
+        padding: 0 12px;
+    }
+
+    #nav-bar h1 {
+        font-size: 1.1rem;
+    }
+
+    #nav-bar ul {
+        gap: 8px;
+    }
+
+    #nav-bar a {
+        font-size: 0.9rem;
+        padding: 6px 8px;
+    }
+
+    #nav-toggle { display: block; margin-left: auto; position: relative; z-index: 60; }
+    #nav-bar ul {
+        display: none; /* hidden until toggled */
+        position: absolute;
+        top: 64px;
+        right: 12px;
+        background-color: #080E4B;
+        padding: 8px;
+        border-radius: 6px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+        flex-direction: column;
+        gap: 0;
+        min-width: 140px;
+        z-index: 40;
+    }
+
+    #nav-bar.open ul { display: flex; }
+
+    #nav-bar ul li { margin: 0; }
+    #nav-bar ul li a { display: block; padding: 8px 12px; font-size: 1rem; }
+
+    #home,
+    #about,
+    #features,
+    #gameplay {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        padding: 1rem;
+        text-align: left;
+    }
+
+    #home img,
+    #about img {
+        float: none;
+        margin: 0 auto;
+        border-radius: 6px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    #home h2,
+    #about h2,
+    #features h2,
+    #gameplay-content h2 {
+        font-size: clamp(1.25rem, 4.5vw, 1.75rem);
+        margin-bottom: 0.5rem;
+    }
+
+    #home p,
+    #about p,
+    #gameplay p,
+    #gameplay li {
+        font-size: 0.95rem;
+        padding: 0.25rem 0;
+    }
+
+    #cards-section {
+        gap: 1rem;
+        padding: 0 0.5rem;
+        justify-content: stretch;
+    }
+
+    .card {
+        width: 100%;
+        padding: 0.8rem;
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+    }
+
+    #gameplay-content {
+        max-width: 100%;
+        flex: none;
+    }
+
+    #gameplay img {
+        min-width: auto;
+        max-width: 100%;
+        flex: none;
+        margin: 0.5rem auto 0;
+    }
+
+    body {
+        word-break: break-word;
+        -webkit-font-smoothing: antialiased;
+    }
 }

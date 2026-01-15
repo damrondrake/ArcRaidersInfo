@@ -10,8 +10,13 @@
   <body>
     <div id="nav-bar">
       <h1>Arc Raiders Info</h1>
+      <button id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-list">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
       <nav>
-        <ul>
+        <ul id="nav-list">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#features">Features</a></li>
@@ -121,8 +126,37 @@
       <img
           src="images/gameplay_img.jpg"
           alt="Arc Raiders Gameplay Image"
-          width="600"
         />
     </section>
   </body>
+  <script>
+    (function () {
+      var toggle = document.getElementById('nav-toggle');
+      var navBar = document.getElementById('nav-bar');
+      if (!toggle || !navBar) return;
+      toggle.addEventListener('click', function (e) {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!expanded));
+        navBar.classList.toggle('open');
+        e.stopPropagation();
+        if (navBar.classList.contains('open')) {
+          var firstLink = navBar.querySelector('#nav-list a');
+          if (firstLink) firstLink.focus();
+        }
+      });
+      document.addEventListener('click', function (e) {
+        if (!navBar.contains(e.target) && navBar.classList.contains('open')) {
+          navBar.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && navBar.classList.contains('open')) {
+          navBar.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.focus();
+        }
+      });
+    })();
+  </script>
 </html>
