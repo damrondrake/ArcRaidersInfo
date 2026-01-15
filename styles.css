@@ -3,6 +3,13 @@ html, body {
     padding: 0;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
 /* Navigation Bar Styles */
 #nav-bar {
     width: 100%;
@@ -99,7 +106,7 @@ html, body {
 /* Features Section Styles */
 #features {
     background-color: #2A35A3;
-    padding: 3.5rem;
+    padding: clamp(2rem, 5vw, 6.5rem);
 }
 
 #features > * { 
@@ -145,7 +152,27 @@ html, body {
     background-color: #2F3EB0;;
 }
 
-#gameplay h2 {
+#gameplay-content h2 {
     font-size: 3rem;
     color: #00E5FF;
+    margin-left: 15px;
+}
+
+#gameplay p, 
+#gameplay ul, 
+#gameplay li {
+    font-size: 1.5rem;
+    padding: 1rem;
+    color: white;
+}
+
+#gameplay-content p {
+    width: 60ch;
+}
+
+#gameplay img {
+    float: right;
+    border-radius: 5%;
+    padding-left: 5rem;
+    width: 45%;
 }
