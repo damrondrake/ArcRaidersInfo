@@ -330,3 +330,142 @@ html, body {
         -webkit-font-smoothing: antialiased;
     }
 }
+
+/* Tablet layout adjustments (landscape and portrait tablets) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    #nav-toggle { display: none !important; }
+    #nav-bar ul {
+        display: flex !important;
+        position: static;
+        top: auto;
+        right: auto;
+        background: transparent;
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+        gap: 12px;
+        align-items: center;
+    }
+    #nav-bar ul li a {
+        padding: 8px 10px;
+        font-size: 1.05rem;
+    }
+
+    #home, #about {
+        padding: 2.5rem;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    #home img, #about img {
+        float: none;
+        max-width: 45%;
+        height: auto;
+        margin: 0;
+    }
+
+    #home > #home-content, #about > #about-content {
+        flex: 1 1 50%;
+    }
+
+    #cards-section {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0 1.5rem;
+    }
+
+    .card {
+        width: 45%;
+        padding: 1rem;
+    }
+
+    #gameplay {
+        gap: 2rem;
+        padding: 2rem;
+        justify-content: space-between;
+    }
+
+    #gameplay-content {
+        max-width: 48ch;
+        flex: 1 1 50%;
+    }
+
+    #gameplay img {
+        min-width: 220px;
+        max-width: 50%;
+        flex: 0 0 48%;
+    }
+
+    #home h2,
+    #about h2,
+    #features h2,
+    #gameplay-content h2 {
+        font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    }
+
+    #home p,
+    #about p,
+    #gameplay p,
+    #gameplay li {
+        font-size: 1.05rem;
+        padding: 0.5rem 0;
+    }
+}
+
+/* Large phones (between iPhone SE and small tablets) e.g. iPhone 14 Pro Max ~430px */
+@media (min-width: 376px) and (max-width: 480px) {
+    #nav-toggle { display: block; margin-left: auto; position: relative; z-index: 60; }
+    #nav-bar ul {
+        display: none;
+    }
+    #nav-bar.open ul {
+        display: flex;
+        position: absolute;
+        top: 64px;
+        right: 12px;
+    }
+
+    #nav-bar h1 { font-size: 1.15rem; }
+    #nav-bar a { font-size: 0.98rem; padding: 6px 8px; }
+
+    #home, #about, #features, #gameplay {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.9rem;
+        padding: 1.25rem;
+    }
+
+    #home h2, #about h2, #features h2, #gameplay-content h2 {
+        font-size: 1.4rem;
+    }
+
+    #home img, #about img, #gameplay img {
+        max-width: 100%;
+        height: auto;
+        margin: 0.5rem 0 0;
+    }
+
+    #cards-section { padding: 0 0.5rem; gap: 0.75rem; }
+    .card { width: 100%; }
+}
+
+/* Small-to-medium phones and phablets (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+    #nav-toggle { display: none !important; }
+    #nav-bar ul { display: flex !important; gap: 10px; }
+    #nav-bar a { font-size: 1rem; padding: 8px 10px; }
+
+    #home, #about, #features, #gameplay {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+
+    #home img, #about img, #gameplay img { max-width: 100%; height: auto; margin: 0.5rem 0 0; }
+
+    #cards-section { display: flex; gap: 1rem; flex-wrap: wrap; padding: 0 1rem; }
+    .card { width: calc(50% - 0.5rem); }
+}
